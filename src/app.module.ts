@@ -4,10 +4,16 @@ import { AppService } from './app.service';
 import { ProductModule } from './product/product.module';
 import { MongooseModule } from '@nestjs/mongoose';
 
+
 @Module({
   imports: [
     ProductModule,
-    MongooseModule.forRoot('mongodb://127.0.0.1:27017/products-nest-api'),
+    MongooseModule.forRoot('mongodb://127.0.0.1:27017/products-nest-api', {
+      connectionName: 'products',
+    }),
+    MongooseModule.forRoot('mongodb://127.0.0.1:27017/products-nest-api',{
+      connectionName: 'users',
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
